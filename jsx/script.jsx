@@ -6,6 +6,7 @@ class MenWomen extends React.Component{
         this.state = {
             showMen: false,
             showWomen: false,
+            showContent: false,
             showHit: true,
             selectedOption: ''
         }
@@ -25,10 +26,12 @@ class MenWomen extends React.Component{
         if(e.target.value === 'men'){
             this.setState({showWomen: false});
             this.setState({showMen: true});
+            this.setState({showContent: true});
         }
         else {
             this.setState({showMen: false});
             this.setState({showWomen: true});
+            this.setState({showContent: true});
         }
 
 
@@ -82,6 +85,7 @@ class MenWomen extends React.Component{
                 <Sex
                     men = {this.state.showMen}
                     women = {this.state.showWomen}
+                    content = {this.state.showContent}
                 />
             </div>
             )
@@ -167,6 +171,28 @@ class Sex extends React.Component{
                         </div>
                     </div>
                 </div>
+                <div id="wb_LayoutGrid9" style={{display: this.props.content ? 'block' : 'none' }}>
+                    <div id="LayoutGrid9">
+                        <div className="row">
+                            <div className="col-1">
+                                <div id="wb_Text7">
+                                    <span id="wb_uid5">Одежда мужская на рост 180 см</span>
+                                </div>
+                                <div id="wb_LayoutGrid10">
+                                    <div id="LayoutGrid10">
+                                        <div className="row">
+                                            <div className="col-1">
+                                                <div id="wb_Text8">
+                                                    <span id="wb_uid6">Штаны<br/>Носки<br/>Трусы</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
 
@@ -200,80 +226,7 @@ class Footer extends React.Component{
 }
 
 
-// class PizzaSizePicker extends React.Component {
-//     constructor() {
-//         super();
-//
-//         this.state = {
-//             size: ''
-//         };
-//
-//         this.handleChange = this.handleChange.bind(this);
-//         this.handleSubmit = this.handleSubmit.bind(this);
-//     }
-//
-//     handleChange(event) {
-//         this.setState({
-//             size: event.target.value
-//         });
-//     }
-//
-//     handleSubmit(event) {
-//         event.preventDefault();
-//
-//         alert(`You chose the ${this.state.size} pizza.`);
-//     }
-//
-//     render() {
-//         return (
-//             <form onSubmit={this.handleSubmit}>
-//                 <p className="title">Select a pizza size:</p>
-//
-//                 <ul>
-//                     <li>
-//                         <label>
-//                             <input
-//                                 type="radio"
-//                                 value="small"
-//                                 checked={this.state.size === "small"}
-//                                 onChange={this.handleChange}
-//                             />
-//                             Small
-//                         </label>
-//                     </li>
-//
-//                     <li>
-//                         <label>
-//                             <input
-//                                 type="radio"
-//                                 value="medium"
-//                                 checked={this.state.size === "medium"}
-//                                 onChange={this.handleChange}
-//                             />
-//                             Medium
-//                         </label>
-//                     </li>
-//
-//                     <li>
-//                         <label>
-//                             <input
-//                                 type="radio"
-//                                 value="large"
-//                                 checked={this.state.size === "large"}
-//                                 onChange={this.handleChange}
-//                             />
-//                             Large
-//                         </label>
-//                     </li>
-//                 </ul>
-//
-//                 <button type="submit" className="submit-button">Make your choice</button>
-//             </form>
-//         );
-//     }
-// }
 
-// ReactDOM.render(<PizzaSizePicker />, document.getElementById('app'));
 
 ReactDOM.render(
     <MenWomen/>,

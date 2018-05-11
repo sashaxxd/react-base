@@ -6,6 +6,7 @@ class MenWomen extends React.Component {
         this.state = {
             showMen: false,
             showWomen: false,
+            showContent: false,
             showHit: true,
             selectedOption: ''
         };
@@ -22,9 +23,11 @@ class MenWomen extends React.Component {
         if (e.target.value === 'men') {
             this.setState({ showWomen: false });
             this.setState({ showMen: true });
+            this.setState({ showContent: true });
         } else {
             this.setState({ showMen: false });
             this.setState({ showWomen: true });
+            this.setState({ showContent: true });
         }
 
         // alert(`You chose the ${this.state.selectedOption} pizza.`);
@@ -114,7 +117,8 @@ class MenWomen extends React.Component {
             }),
             React.createElement(Sex, {
                 men: this.state.showMen,
-                women: this.state.showWomen
+                women: this.state.showWomen,
+                content: this.state.showContent
             })
         );
     }
@@ -253,6 +257,60 @@ class Sex extends React.Component {
                         )
                     )
                 )
+            ),
+            React.createElement(
+                'div',
+                { id: 'wb_LayoutGrid9', style: { display: this.props.content ? 'block' : 'none' } },
+                React.createElement(
+                    'div',
+                    { id: 'LayoutGrid9' },
+                    React.createElement(
+                        'div',
+                        { className: 'row' },
+                        React.createElement(
+                            'div',
+                            { className: 'col-1' },
+                            React.createElement(
+                                'div',
+                                { id: 'wb_Text7' },
+                                React.createElement(
+                                    'span',
+                                    { id: 'wb_uid5' },
+                                    '\u041E\u0434\u0435\u0436\u0434\u0430 \u043C\u0443\u0436\u0441\u043A\u0430\u044F \u043D\u0430 \u0440\u043E\u0441\u0442 180 \u0441\u043C'
+                                )
+                            ),
+                            React.createElement(
+                                'div',
+                                { id: 'wb_LayoutGrid10' },
+                                React.createElement(
+                                    'div',
+                                    { id: 'LayoutGrid10' },
+                                    React.createElement(
+                                        'div',
+                                        { className: 'row' },
+                                        React.createElement(
+                                            'div',
+                                            { className: 'col-1' },
+                                            React.createElement(
+                                                'div',
+                                                { id: 'wb_Text8' },
+                                                React.createElement(
+                                                    'span',
+                                                    { id: 'wb_uid6' },
+                                                    '\u0428\u0442\u0430\u043D\u044B',
+                                                    React.createElement('br', null),
+                                                    '\u041D\u043E\u0441\u043A\u0438',
+                                                    React.createElement('br', null),
+                                                    '\u0422\u0440\u0443\u0441\u044B'
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
             )
         );
     }
@@ -287,81 +345,6 @@ class Footer extends React.Component {
         );
     }
 }
-
-// class PizzaSizePicker extends React.Component {
-//     constructor() {
-//         super();
-//
-//         this.state = {
-//             size: ''
-//         };
-//
-//         this.handleChange = this.handleChange.bind(this);
-//         this.handleSubmit = this.handleSubmit.bind(this);
-//     }
-//
-//     handleChange(event) {
-//         this.setState({
-//             size: event.target.value
-//         });
-//     }
-//
-//     handleSubmit(event) {
-//         event.preventDefault();
-//
-//         alert(`You chose the ${this.state.size} pizza.`);
-//     }
-//
-//     render() {
-//         return (
-//             <form onSubmit={this.handleSubmit}>
-//                 <p className="title">Select a pizza size:</p>
-//
-//                 <ul>
-//                     <li>
-//                         <label>
-//                             <input
-//                                 type="radio"
-//                                 value="small"
-//                                 checked={this.state.size === "small"}
-//                                 onChange={this.handleChange}
-//                             />
-//                             Small
-//                         </label>
-//                     </li>
-//
-//                     <li>
-//                         <label>
-//                             <input
-//                                 type="radio"
-//                                 value="medium"
-//                                 checked={this.state.size === "medium"}
-//                                 onChange={this.handleChange}
-//                             />
-//                             Medium
-//                         </label>
-//                     </li>
-//
-//                     <li>
-//                         <label>
-//                             <input
-//                                 type="radio"
-//                                 value="large"
-//                                 checked={this.state.size === "large"}
-//                                 onChange={this.handleChange}
-//                             />
-//                             Large
-//                         </label>
-//                     </li>
-//                 </ul>
-//
-//                 <button type="submit" className="submit-button">Make your choice</button>
-//             </form>
-//         );
-//     }
-// }
-
-// ReactDOM.render(<PizzaSizePicker />, document.getElementById('app'));
 
 ReactDOM.render(React.createElement(MenWomen, null), document.getElementById('menu'));
 
